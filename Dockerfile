@@ -16,10 +16,6 @@ RUN ssh-keygen -A
 
 RUN echo "local6.* /var/log/auth.log" >> /etc/rsyslog.conf
 
-RUN python3 -m venv /opt/venv
-
-RUN /opt/venv/bin/pip install requests
-
 EXPOSE 22 80
 
 COPY monitor_ssh.py /usr/local/bin/monitor_ssh.py
@@ -27,4 +23,7 @@ COPY monitor_ssh.py /usr/local/bin/monitor_ssh.py
 COPY index.html /var/www/html
 COPY style.css /var/www/html
 
-CMD ["sh", "-c", "service apache2 start && rsyslogd && /usr/sbin/sshd -D && /opt/venv/bin/python /usr/local/bin/monitor_ssh.py"]
+COPY start.sh /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
+
+CMD ["/usr/local/bin/start.sh"]
