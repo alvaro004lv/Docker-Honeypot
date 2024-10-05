@@ -1,10 +1,9 @@
 FROM ubuntu:latest
 
-RUN apt-get update && apt-get install -y openssh-server rsyslog python3 python3-venv && \
+RUN apt-get update && apt-get install -y openssh-server rsyslog python3 python3-venv apache2 && \
     mkdir /var/run/sshd
+
 RUN apt-get -y install python3-pip
-
-
 
 RUN useradd -m loki && \
     echo 'loki:password123' | chpasswd
@@ -21,8 +20,11 @@ RUN python3 -m venv /opt/venv
 
 RUN /opt/venv/bin/pip install requests
 
-EXPOSE 22
+EXPOSE 22 80
 
 COPY monitor_ssh.py /usr/local/bin/monitor_ssh.py
 
-CMD ["sh", "-c", "rsyslogd && /usr/sbin/sshd -D & /opt/venv/bin/python /usr/local/bin/monitor_ssh.py"]
+COPY index.html /var/www/html
+COPY style.css /var/www/html
+
+CMD ["sh", "-c", "service apache2 start && rsyslogd && /usr/sbin/sshd -D && /opt/venv/bin/python /usr/local/bin/monitor_ssh.py"]
