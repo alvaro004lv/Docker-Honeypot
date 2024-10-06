@@ -8,4 +8,4 @@ rsyslogd
 
 /usr/sbin/sshd -D &
 
-python3 /usr/local/bin/monitor_ssh.py
+python3 /usr/local/bin/scripts/monitor_ssh.py

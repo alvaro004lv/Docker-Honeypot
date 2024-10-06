@@ -18,12 +18,10 @@ RUN echo "local6.* /var/log/auth.log" >> /etc/rsyslog.conf
 
 EXPOSE 22 80
 
-COPY monitor_ssh.py /usr/local/bin/monitor_ssh.py
+COPY scripts /usr/local/bin/scripts
 
-COPY index.html /var/www/html
-COPY style.css /var/www/html
+RUN chmod +x /usr/local/bin/scripts/start.sh
 
-COPY start.sh /usr/local/bin/start.sh
-RUN chmod +x /usr/local/bin/start.sh
+COPY web /var/www/html
 
-CMD ["/usr/local/bin/start.sh"]
+CMD ["/usr/local/bin/scripts/start.sh"]
