@@ -74,6 +74,7 @@ def sign_up():
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True)
+            send_telegram_message(f"New user registered: {new_user.email}")
             flash('Account created successfully!', category='success')
             return redirect(url_for('views.home'))
 
