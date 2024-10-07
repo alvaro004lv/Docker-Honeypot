@@ -74,7 +74,6 @@ def sign_up():
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True)
-            send_telegram_message(f"User {user.email} has registered in honeypot website.")
             flash('Account created successfully!', category='success')
             return redirect(url_for('views.home'))
 
