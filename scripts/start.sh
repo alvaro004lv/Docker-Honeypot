@@ -1,7 +1,5 @@
 #!/bin/bash
 
-apt install -y python3-requests
-
 service apache2 start
 
 rsyslogd
