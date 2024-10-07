@@ -1,9 +1,7 @@
 FROM ubuntu:latest
 
-RUN apt-get update && apt-get install -y openssh-server rsyslog python3 apache2 libapache2-mod-wsgi-py3 && \
+RUN apt-get update && apt-get install -y openssh-server rsyslog python3 python3-pip apache2 libapache2-mod-wsgi-py3 && \
     mkdir /var/run/sshd
-
-RUN apt install python3-pip -y
 
 RUN useradd -m loki && \
     echo 'loki:password123' | chpasswd
