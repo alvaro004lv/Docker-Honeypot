@@ -1,0 +1,45 @@
+# -----------------------------
+# Ignorar cachés y archivos temporales de GLPI
+# -----------------------------
+compose/webserver/glpi/files/_cache/
+compose/webserver/glpi/files/_tmp/
+compose/webserver/glpi/files/_sessions/
+compose/webserver/glpi/files/_uploads/
+compose/webserver/glpi/files/_logs/
+
+# -----------------------------
+# Ignorar configuraciones locales de Docker
+# -----------------------------
+compose/webserver/glpi/config/config_db.php
+compose/webserver/glpi/config/config_db_slave.php
+
+# -----------------------------
+# Ignorar imágenes y contenedores generados
+# -----------------------------
+*.log
+*.pid
+*.sock
+*.pid.lock
+*.swp
+*.bak
+
+# -----------------------------
+# Ignorar ficheros del sistema de Windows
+# -----------------------------
+Thumbs.db
+Desktop.ini
+*.DS_Store
+
+# -----------------------------
+# Ignorar archivos de node, python o entorno virtual si existen
+# -----------------------------
+node_modules/
+venv/
+__pycache__/
+*.pyc
+
+# -----------------------------
+# Ignorar archivos de build de Docker
+# -----------------------------
+*.tar
+docker-compose.override.yml

@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  gateway:
+    build: ../compose/gateway
+    container_name: honeypot-gateway
+    networks:
+      - honeypot_net
+    ports:
+      - "2223:22"      # SSH desde host
+      - "1445:445"     # SMB (host:1445 -> container:445)
+      - "1139:139"     # NetBIOS session (host:1139 -> container:139)
+    tty: true
+
+
+  web:
+    build: ../compose/webserver
+    container_name: glpi-web
+    volumes:
+      - ../compose/webserver/glpi:/var/www/html
+    depends_on:
+      - db
+      - gateway
+    environment:
+      TZ: Europe/Madrid
+    networks:
+      - honeypot_net
+
+  db:
+    image: mysql:5.7
+    container_name: glpi-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: glpi
+      MYSQL_USER: glpi
+      MYSQL_PASSWORD: glpi
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - honeypot_net
+
+  iot:
+    build: ../compose/iot
+    container_name: iot-vuln
+    networks:
+      - honeypot_net
+
+volumes:
+  db_data:
+
+networks:
+  honeypot_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/24

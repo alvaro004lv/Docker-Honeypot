@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Server Room Temp</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Server Room Temp</h1>
+    
+    <div class="gauge-wrapper">
+      <svg class="gauge" viewBox="0 0 100 50">
+        <path class="gauge-bg" d="M10,50 A40,40 0 0,1 90,50" />
+        <path id="gauge-fill" class="gauge-fill" d="M10,50 A40,40 0 0,1 90,50" />
+      </svg>
+      <div class="temperature-label">
+        <span id="current-temperature">--</span>°C
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="decrease">−</button>
+      <button id="increase">+</button>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

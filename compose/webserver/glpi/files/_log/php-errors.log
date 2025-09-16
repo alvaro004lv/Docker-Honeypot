@@ -1,0 +1,336 @@
+[2025-08-06 17:55:25] glpiphplog.WARNING: Test logger  
+[2025-08-06 17:55:35] glpiphplog.WARNING: Test logger  
+[2025-08-06 17:55:41] glpiphplog.WARNING: Test logger  
+[2025-08-06 17:56:06] glpiphplog.WARNING: Test logger  
+[2025-08-06 18:02:36] glpiphplog.WARNING: Test logger  
+[2025-08-06 18:05:34] glpiphplog.DEBUG: Html::compileScss() in /var/www/html/inc/html.class.php line 6842
+css/styles is new, loading  {"user":"@07e9ca2b4a43"} 
+[2025-08-06 18:05:35] glpiphplog.DEBUG: Html::compileScss() in /var/www/html/inc/html.class.php line 6842
+css/palettes/auror is new, loading  {"user":"@07e9ca2b4a43","mem_usage":"0.099\", 6.12Mio)"} 
+[2025-08-06 18:14:34] glpiphplog.WARNING: Test logger  
+[2025-08-06 18:59:02] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Warning(2): Invalid argument supplied for foreach()
+  Backtrace :
+  inc/glpiuploadhandler.class.php:136                
+  ajax/fileupload.php:40                             GLPIUploadHandler::uploadFiles()
+  {"user":"2@07e9ca2b4a43"} 
+[2025-08-06 18:59:02] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Notice(8): Undefined index: tmp_name
+  Backtrace :
+  ...y-file-upload/server/php/UploadHandler.php:1394 
+  inc/glpiuploadhandler.class.php:174                UploadHandler->post()
+  ajax/fileupload.php:40                             GLPIUploadHandler::uploadFiles()
+  {"user":"2@07e9ca2b4a43","mem_usage":"0.009\", 6.40Mio)"} 
+[2025-08-06 19:05:18] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Warning(2): sha1_file(/var/www/html/files/_tmp/6893a75787e0c6.30515570a.php): failed to open stream: Invalid argument
+  Backtrace :
+  :                                                  
+  inc/document.class.php:560                         sha1_file()
+  inc/commondbtm.class.php:5078                      Document->getFromDBbyContent()
+  inc/commonitilobject.class.php:656                 CommonDBTM->addFiles()
+  inc/ticket.class.php:1308                          CommonITILObject->prepareInputForUpdate()
+  inc/commondbtm.class.php:1363                      Ticket->prepareInputForUpdate()
+  front/ticket.form.php:72                           CommonDBTM->update()
+  {"user":"2@07e9ca2b4a43"} 
+[2025-08-06 19:05:18] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Warning(2): sha1_file(/var/www/html/files/_tmp/6893a75787e0c6.30515570a.php): failed to open stream: Invalid argument
+  Backtrace :
+  :                                                  
+  inc/document.class.php:1161                        sha1_file()
+  inc/document.class.php:229                         Document::moveDocument()
+  inc/commondbtm.class.php:1101                      Document->prepareInputForAdd()
+  inc/commondbtm.class.php:5115                      CommonDBTM->add()
+  inc/commonitilobject.class.php:656                 CommonDBTM->addFiles()
+  inc/ticket.class.php:1308                          CommonITILObject->prepareInputForUpdate()
+  inc/commondbtm.class.php:1363                      Ticket->prepareInputForUpdate()
+  front/ticket.form.php:72                           CommonDBTM->update()
+  {"user":"2@07e9ca2b4a43","mem_usage":"0.011\", 14.76Mio)"} 
+[2025-08-06 19:05:18] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Notice(8): Undefined index: tag
+  Backtrace :
+  inc/commondbtm.class.php:5119                      
+  inc/commonitilobject.class.php:656                 CommonDBTM->addFiles()
+  inc/ticket.class.php:1308                          CommonITILObject->prepareInputForUpdate()
+  inc/commondbtm.class.php:1363                      Ticket->prepareInputForUpdate()
+  front/ticket.form.php:72                           CommonDBTM->update()
+  {"user":"2@07e9ca2b4a43","mem_usage":"0.014\", 14.81Mio)"} 
+[2025-08-06 19:06:39] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Warning(2): sha1_file(/var/www/html/files/_tmp/6893a7adb5ba16.11330714a.php): failed to open stream: Invalid argument
+  Backtrace :
+  :                                                  
+  inc/document.class.php:560                         sha1_file()
+  inc/commondbtm.class.php:5078                      Document->getFromDBbyContent()
+  inc/commonitilobject.class.php:656                 CommonDBTM->addFiles()
+  inc/ticket.class.php:1308                          CommonITILObject->prepareInputForUpdate()
+  inc/commondbtm.class.php:1363                      Ticket->prepareInputForUpdate()
+  front/ticket.form.php:72                           CommonDBTM->update()
+  {"user":"2@07e9ca2b4a43"} 
+[2025-08-06 19:06:39] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Warning(2): sha1_file(/var/www/html/files/_tmp/6893a7adb5ba16.11330714a.php): failed to open stream: Invalid argument
+  Backtrace :
+  :                                                  
+  inc/document.class.php:1161                        sha1_file()
+  inc/document.class.php:229                         Document::moveDocument()
+  inc/commondbtm.class.php:1101                      Document->prepareInputForAdd()
+  inc/commondbtm.class.php:5115                      CommonDBTM->add()
+  inc/commonitilobject.class.php:656                 CommonDBTM->addFiles()
+  inc/ticket.class.php:1308                          CommonITILObject->prepareInputForUpdate()
+  inc/commondbtm.class.php:1363                      Ticket->prepareInputForUpdate()
+  front/ticket.form.php:72                           CommonDBTM->update()
+  {"user":"2@07e9ca2b4a43","mem_usage":"0.012\", 14.76Mio)"} 
+[2025-08-06 19:06:39] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Notice(8): Undefined index: tag
+  Backtrace :
+  inc/commondbtm.class.php:5119                      
+  inc/commonitilobject.class.php:656                 CommonDBTM->addFiles()
+  inc/ticket.class.php:1308                          CommonITILObject->prepareInputForUpdate()
+  inc/commondbtm.class.php:1363                      Ticket->prepareInputForUpdate()
+  front/ticket.form.php:72                           CommonDBTM->update()
+  {"user":"2@07e9ca2b4a43","mem_usage":"0.013\", 14.81Mio)"} 
+[2025-08-06 19:09:54] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Warning(2): sha1_file(/var/www/html/files/_tmp/6893a875c11f88.23799409a.php): failed to open stream: Invalid argument
+  Backtrace :
+  :                                                  
+  inc/document.class.php:1161                        sha1_file()
+  inc/document.class.php:229                         Document::moveDocument()
+  inc/commondbtm.class.php:1101                      Document->prepareInputForAdd()
+  front/document.form.php:56                         CommonDBTM->add()
+  {"user":"2@07e9ca2b4a43"} 
+[2025-08-06 19:10:53] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Warning(2): sha1_file(/var/www/html/files/_tmp/6893a8b5854440.84083895a.php): failed to open stream: Invalid argument
+  Backtrace :
+  :                                                  
+  inc/document.class.php:560                         sha1_file()
+  inc/commondbtm.class.php:5078                      Document->getFromDBbyContent()
+  inc/commonitilobject.class.php:656                 CommonDBTM->addFiles()
+  inc/ticket.class.php:1308                          CommonITILObject->prepareInputForUpdate()
+  inc/commondbtm.class.php:1363                      Ticket->prepareInputForUpdate()
+  front/ticket.form.php:72                           CommonDBTM->update()
+  {"user":"2@07e9ca2b4a43"} 
+[2025-08-06 19:10:53] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Warning(2): sha1_file(/var/www/html/files/_tmp/6893a8b5854440.84083895a.php): failed to open stream: Invalid argument
+  Backtrace :
+  :                                                  
+  inc/document.class.php:1161                        sha1_file()
+  inc/document.class.php:229                         Document::moveDocument()
+  inc/commondbtm.class.php:1101                      Document->prepareInputForAdd()
+  inc/commondbtm.class.php:5115                      CommonDBTM->add()
+  inc/commonitilobject.class.php:656                 CommonDBTM->addFiles()
+  inc/ticket.class.php:1308                          CommonITILObject->prepareInputForUpdate()
+  inc/commondbtm.class.php:1363                      Ticket->prepareInputForUpdate()
+  front/ticket.form.php:72                           CommonDBTM->update()
+  {"user":"2@07e9ca2b4a43","mem_usage":"0.012\", 14.76Mio)"} 
+[2025-08-06 19:10:53] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Notice(8): Undefined index: tag
+  Backtrace :
+  inc/commondbtm.class.php:5119                      
+  inc/commonitilobject.class.php:656                 CommonDBTM->addFiles()
+  inc/ticket.class.php:1308                          CommonITILObject->prepareInputForUpdate()
+  inc/commondbtm.class.php:1363                      Ticket->prepareInputForUpdate()
+  front/ticket.form.php:72                           CommonDBTM->update()
+  {"user":"2@07e9ca2b4a43","mem_usage":"0.012\", 14.82Mio)"} 
+[2025-08-06 19:20:21] glpiphplog.WARNING: Document::isImage() in /var/www/html/inc/document.class.php line 1561
+For security reasons, you should consider using exif PHP extension to properly check images.  {"user":"2@07e9ca2b4a43"} 
+[2025-08-06 19:31:01] glpiphplog.ERROR: Document_Item::prepareInputForAdd() in /var/www/html/inc/document_item.class.php line 121
+Duplicated document item relation  {"user":"6@07e9ca2b4a43"} 
+[2025-08-06 19:37:45] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Warning(2): sha1_file(/var/www/html/files/_tmp/6893af010bf468.22358199reverse.php): failed to open stream: Invalid argument
+  Backtrace :
+  :                                                  
+  inc/document.class.php:560                         sha1_file()
+  inc/commondbtm.class.php:5078                      Document->getFromDBbyContent()
+  inc/commonitilobject.class.php:1447                CommonDBTM->addFiles()
+  inc/ticket.class.php:2149                          CommonITILObject->post_addItem()
+  inc/commondbtm.class.php:1142                      Ticket->post_addItem()
+  front/tracking.injector.php:62                     CommonDBTM->add()
+  {"user":"6@07e9ca2b4a43"} 
+[2025-08-06 19:37:45] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Warning(2): sha1_file(/var/www/html/files/_tmp/6893af010bf468.22358199reverse.php): failed to open stream: Invalid argument
+  Backtrace :
+  :                                                  
+  inc/document.class.php:1161                        sha1_file()
+  inc/document.class.php:229                         Document::moveDocument()
+  inc/commondbtm.class.php:1101                      Document->prepareInputForAdd()
+  inc/commondbtm.class.php:5115                      CommonDBTM->add()
+  inc/commonitilobject.class.php:1447                CommonDBTM->addFiles()
+  inc/ticket.class.php:2149                          CommonITILObject->post_addItem()
+  inc/commondbtm.class.php:1142                      Ticket->post_addItem()
+  front/tracking.injector.php:62                     CommonDBTM->add()
+  {"user":"6@07e9ca2b4a43","mem_usage":"0.013\", 16.07Mio)"} 
+[2025-08-06 19:37:45] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Notice(8): Undefined index: tag
+  Backtrace :
+  inc/commondbtm.class.php:5119                      
+  inc/commonitilobject.class.php:1447                CommonDBTM->addFiles()
+  inc/ticket.class.php:2149                          CommonITILObject->post_addItem()
+  inc/commondbtm.class.php:1142                      Ticket->post_addItem()
+  front/tracking.injector.php:62                     CommonDBTM->add()
+  {"user":"6@07e9ca2b4a43","mem_usage":"0.004\", 16.07Mio)"} 
+[2025-08-07 17:13:10] glpiphplog.ERROR: Document_Item::prepareInputForAdd() in /var/www/html/inc/document_item.class.php line 121
+Duplicated document item relation  {"user":"2@07e9ca2b4a43"} 
+[2025-08-07 21:37:00] glpiphplog.WARNING: Document::isImage() in /var/www/html/inc/document.class.php line 1561
+For security reasons, you should consider using exif PHP extension to properly check images.  {"user":"2@07e9ca2b4a43"} 
+[2025-08-07 21:37:58] glpiphplog.WARNING: Document::isImage() in /var/www/html/inc/document.class.php line 1561
+For security reasons, you should consider using exif PHP extension to properly check images.  {"user":"2@07e9ca2b4a43"} 
+[2025-08-07 21:53:42] glpiphplog.WARNING: Document::isImage() in /var/www/html/inc/document.class.php line 1561
+For security reasons, you should consider using exif PHP extension to properly check images.  {"user":"2@07e9ca2b4a43"} 
+[2025-08-08 17:22:19] glpiphplog.WARNING: Document::isImage() in /var/www/html/inc/document.class.php line 1561
+For security reasons, you should consider using exif PHP extension to properly check images.  {"user":"2@07e9ca2b4a43"} 
+[2025-08-11 17:36:28] glpiphplog.WARNING: Test logger  
+[2025-08-11 17:37:00] glpiphplog.WARNING: Test logger  
+[2025-08-11 17:40:00] glpiphplog.WARNING: Test logger  
+[2025-08-11 17:45:09] glpiphplog.WARNING: Test logger  
+[2025-08-11 17:45:25] glpiphplog.WARNING: Test logger  
+[2025-08-11 17:46:11] glpiphplog.WARNING: Test logger  
+[2025-08-11 17:46:17] glpiphplog.WARNING: Test logger  
+[2025-08-11 17:46:23] glpiphplog.WARNING: Test logger  
+[2025-08-11 17:50:30] glpiphplog.WARNING: Test logger  
+[2025-08-11 17:53:07] glpiphplog.WARNING: Test logger  
+[2025-08-11 17:53:12] glpiphplog.WARNING: Test logger  
+[2025-08-11 17:53:16] glpiphplog.WARNING: Test logger  
+[2025-08-11 17:54:34] glpiphplog.WARNING: Test logger  
+[2025-08-11 17:54:41] glpiphplog.WARNING: Test logger  
+[2025-08-11 17:58:27] glpiphplog.WARNING: Test logger  
+[2025-08-11 19:23:06] glpiphplog.WARNING: Test logger  
+[2025-08-11 19:42:52] glpiphplog.WARNING: Test logger  
+[2025-08-11 19:55:10] glpiphplog.WARNING: Test logger  
+[2025-08-11 20:11:30] glpiphplog.WARNING: Test logger  
+[2025-08-11 20:48:24] glpiphplog.WARNING: Test logger  
+[2025-08-11 21:03:53] glpiphplog.WARNING: Test logger  
+[2025-08-12 17:40:47] glpiphplog.WARNING: Test logger  
+[2025-08-12 17:42:41] glpiphplog.WARNING: Test logger  
+[2025-08-12 17:44:09] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Warning(2): mysqli::__construct(): (HY000/2002): No such file or directory
+  Backtrace :
+  :                                                  
+  inc/dbmysql.class.php:105                          mysqli->__construct()
+  inc/dbmysql.class.php:78                           DBmysql->connect()
+  inc/dbconnection.class.php:137                     DBmysql->__construct()
+  inc/dbconnection.class.php:397                     DBConnection::getDBSlaveConf()
+  inc/crontask.class.php:829                         DBConnection::cronCheckDBreplicate()
+  front/cron.php:61                                  CronTask::launch()
+  {"user":"2@008b6a6007e0"} 
+[2025-08-12 17:44:09] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Warning(2): mysqli::__construct(): (HY000/2002): No such file or directory
+  Backtrace :
+  :                                                  
+  inc/dbmysql.class.php:105                          mysqli->__construct()
+  inc/dbmysql.class.php:78                           DBmysql->connect()
+  inc/dbconnection.class.php:328                     DBmysql->__construct()
+  inc/dbconnection.class.php:405                     DBConnection::getReplicateDelay()
+  inc/crontask.class.php:829                         DBConnection::cronCheckDBreplicate()
+  front/cron.php:61                                  CronTask::launch()
+  {"user":"2@008b6a6007e0","mem_usage":"0.014\", 8.09Mio)"} 
+[2025-08-12 17:44:15] glpiphplog.WARNING: Test logger  
+[2025-08-12 17:44:18] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Warning(2): mysqli::__construct(): (HY000/2002): No such file or directory
+  Backtrace :
+  :                                                  
+  inc/dbmysql.class.php:105                          mysqli->__construct()
+  inc/dbmysql.class.php:78                           DBmysql->connect()
+  inc/dbconnection.class.php:137                     DBmysql->__construct()
+  inc/dbconnection.class.php:437                     DBConnection::getDBSlaveConf()
+  inc/dbconnection.class.php:474                     DBConnection::showAllReplicateDelay()
+  inc/config.class.php:1858                          DBConnection->showSystemInformations()
+  inc/config.class.php:2174                          Config->showSystemInformations()
+  inc/commonglpi.class.php:485                       Config::displayTabContentForItem()
+  inc/commonglpi.class.php:452                       CommonGLPI::displayStandardTab()
+  ajax/common.tabs.php:92                            CommonGLPI::displayStandardTab()
+  {"user":"2@008b6a6007e0"} 
+[2025-08-12 17:44:18] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Warning(2): mysqli::__construct(): (HY000/2002): No such file or directory
+  Backtrace :
+  :                                                  
+  inc/dbmysql.class.php:105                          mysqli->__construct()
+  inc/dbmysql.class.php:78                           DBmysql->connect()
+  inc/dbconnection.class.php:328                     DBmysql->__construct()
+  inc/dbconnection.class.php:446                     DBConnection::getReplicateDelay()
+  inc/dbconnection.class.php:474                     DBConnection::showAllReplicateDelay()
+  inc/config.class.php:1858                          DBConnection->showSystemInformations()
+  inc/config.class.php:2174                          Config->showSystemInformations()
+  inc/commonglpi.class.php:485                       Config::displayTabContentForItem()
+  inc/commonglpi.class.php:452                       CommonGLPI::displayStandardTab()
+  ajax/common.tabs.php:92                            CommonGLPI::displayStandardTab()
+  {"user":"2@008b6a6007e0","mem_usage":"0.008\", 24.24Mio)"} 
+[2025-08-12 17:44:19] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Warning(2): mysqli::__construct(): (HY000/2002): No such file or directory
+  Backtrace :
+  :                                                  
+  inc/dbmysql.class.php:105                          mysqli->__construct()
+  inc/dbmysql.class.php:78                           DBmysql->connect()
+  inc/dbconnection.class.php:137                     DBmysql->__construct()
+  inc/config.class.php:678                           DBConnection::getDBSlaveConf()
+  inc/config.class.php:2178                          Config->showFormDBSlave()
+  inc/commonglpi.class.php:485                       Config::displayTabContentForItem()
+  inc/commonglpi.class.php:452                       CommonGLPI::displayStandardTab()
+  ajax/common.tabs.php:92                            CommonGLPI::displayStandardTab()
+  {"user":"2@008b6a6007e0","mem_usage":"0.298\", 26.11Mio)"} 
+[2025-08-12 17:47:19] glpiphplog.WARNING: Test logger  
+[2025-08-12 17:47:22] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Warning(2): mysqli::__construct(): (HY000/2002): No such file or directory
+  Backtrace :
+  :                                                  
+  inc/dbmysql.class.php:105                          mysqli->__construct()
+  inc/dbmysql.class.php:78                           DBmysql->connect()
+  inc/dbconnection.class.php:137                     DBmysql->__construct()
+  inc/dbconnection.class.php:437                     DBConnection::getDBSlaveConf()
+  inc/dbconnection.class.php:474                     DBConnection::showAllReplicateDelay()
+  inc/config.class.php:1858                          DBConnection->showSystemInformations()
+  inc/config.class.php:2174                          Config->showSystemInformations()
+  inc/commonglpi.class.php:485                       Config::displayTabContentForItem()
+  inc/commonglpi.class.php:452                       CommonGLPI::displayStandardTab()
+  ajax/common.tabs.php:92                            CommonGLPI::displayStandardTab()
+  {"user":"2@008b6a6007e0"} 
+[2025-08-12 17:47:22] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Warning(2): mysqli::__construct(): (HY000/2002): No such file or directory
+  Backtrace :
+  :                                                  
+  inc/dbmysql.class.php:105                          mysqli->__construct()
+  inc/dbmysql.class.php:78                           DBmysql->connect()
+  inc/dbconnection.class.php:328                     DBmysql->__construct()
+  inc/dbconnection.class.php:446                     DBConnection::getReplicateDelay()
+  inc/dbconnection.class.php:474                     DBConnection::showAllReplicateDelay()
+  inc/config.class.php:1858                          DBConnection->showSystemInformations()
+  inc/config.class.php:2174                          Config->showSystemInformations()
+  inc/commonglpi.class.php:485                       Config::displayTabContentForItem()
+  inc/commonglpi.class.php:452                       CommonGLPI::displayStandardTab()
+  ajax/common.tabs.php:92                            CommonGLPI::displayStandardTab()
+  {"user":"2@008b6a6007e0","mem_usage":"0.007\", 24.24Mio)"} 
+[2025-08-12 17:47:22] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Warning(2): mysqli::__construct(): (HY000/2002): No such file or directory
+  Backtrace :
+  :                                                  
+  inc/dbmysql.class.php:105                          mysqli->__construct()
+  inc/dbmysql.class.php:78                           DBmysql->connect()
+  inc/dbconnection.class.php:137                     DBmysql->__construct()
+  inc/config.class.php:678                           DBConnection::getDBSlaveConf()
+  inc/config.class.php:2178                          Config->showFormDBSlave()
+  inc/commonglpi.class.php:485                       Config::displayTabContentForItem()
+  inc/commonglpi.class.php:452                       CommonGLPI::displayStandardTab()
+  ajax/common.tabs.php:92                            CommonGLPI::displayStandardTab()
+  {"user":"2@008b6a6007e0","mem_usage":"0.260\", 26.11Mio)"} 
+[2025-08-12 17:47:23] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Warning(2): mysqli::__construct(): (HY000/2002): No such file or directory
+  Backtrace :
+  :                                                  
+  inc/dbmysql.class.php:105                          mysqli->__construct()
+  inc/dbmysql.class.php:78                           DBmysql->connect()
+  inc/dbconnection.class.php:137                     DBmysql->__construct()
+  inc/config.class.php:678                           DBConnection::getDBSlaveConf()
+  inc/config.class.php:2178                          Config->showFormDBSlave()
+  inc/commonglpi.class.php:485                       Config::displayTabContentForItem()
+  ajax/common.tabs.php:92                            CommonGLPI::displayStandardTab()
+  {"user":"2@008b6a6007e0"} 
+[2025-08-12 17:47:56] glpiphplog.ERROR: Toolbox::userErrorHandlerNormal() in /var/www/html/inc/toolbox.class.php line 659
+  *** PHP Warning(2): mysqli::__construct(): (HY000/2002): No such file or directory
+  Backtrace :
+  :                                                  
+  inc/dbmysql.class.php:105                          mysqli->__construct()
+  inc/dbmysql.class.php:78                           DBmysql->connect()
+  inc/dbconnection.class.php:137                     DBmysql->__construct()
+  inc/config.class.php:678                           DBConnection::getDBSlaveConf()
+  inc/config.class.php:2178                          Config->showFormDBSlave()
+  inc/commonglpi.class.php:485                       Config::displayTabContentForItem()
+  ajax/common.tabs.php:92                            CommonGLPI::displayStandardTab()
+  {"user":"2@008b6a6007e0"} 
+[2025-09-03 18:16:19] glpiphplog.WARNING: Test logger  
