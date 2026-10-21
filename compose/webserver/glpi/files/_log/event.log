@@ -36,3 +36,73 @@
 [login] 3: glpi log in from IP 172.21.0.1
 2025-08-25 16:25:32 [@008b6a6007e0]
 [login] 3: glpi log in from IP 172.21.0.1
+2025-09-18 16:34:27 [@e5e193ff4046]
+[login] 3: glpi log in from IP 172.28.0.4
+2025-09-18 16:45:39 [@e5e193ff4046]
+[login] 3: glpi log in from IP 172.28.0.4
+2025-09-18 17:04:15 [@e5e193ff4046]
+[login] 3: normal log in from IP 172.28.0.4
+2025-09-18 17:05:16 [@e5e193ff4046]
+[login] 3: Failed login for post-only from IP 172.28.0.4
+2025-09-18 17:05:40 [@e5e193ff4046]
+[login] 3: post-only log in from IP 172.28.0.4
+2025-09-18 17:16:07 [@e5e193ff4046]
+[login] 3: post-only log in from IP 172.28.0.4
+2025-09-18 17:46:38 [@16227e1242d2]
+[login] 3: Failed login for  from IP 172.28.0.4
+2025-09-18 17:47:03 [@16227e1242d2]
+[login] 3: post-only log in from IP 172.28.0.4
+2025-09-18 17:55:18 [@73c199ee14b4]
+[login] 3: Failed login for  from IP 172.28.0.4
+2025-09-18 17:55:50 [@73c199ee14b4]
+[login] 3: glpi log in from IP 172.28.0.4
+2025-09-18 18:12:54 [@73c199ee14b4]
+[login] 3: Failed login for read-only from IP 172.28.0.4
+2025-09-18 18:14:00 [@73c199ee14b4]
+[login] 3: Failed login for  from IP 172.28.0.4
+2025-09-18 18:14:27 [@73c199ee14b4]
+[login] 3: glpi log in from IP 172.28.0.4
+2025-09-18 18:15:22 [@73c199ee14b4]
+[login] 3: post-only log in from IP 172.28.0.4
+2025-09-18 18:21:37 [@73c199ee14b4]
+[login] 3: post-only log in from IP 172.28.0.4
+2025-09-18 19:06:39 [@01ffd666d7b8]
+[login] 3: Failed login for  from IP 172.28.0.4
+2025-09-18 19:07:19 [@01ffd666d7b8]
+[login] 3: glpi log in from IP 172.28.0.4
+2025-09-18 19:50:53 [@ffdb2f3d8f59]
+[login] 3: Failed login for  from IP 172.28.0.4
+2025-09-18 19:51:34 [@ffdb2f3d8f59]
+[login] 3: glpi log in from IP 172.28.0.4
+2025-09-18 19:57:21 [@ffdb2f3d8f59]
+[login] 3: glpi log in from IP 172.28.0.4
+2025-09-18 20:05:42 [@f8b1f59a339c]
+[login] 3: Failed login for  from IP 172.28.0.4
+2025-09-18 20:06:01 [@f8b1f59a339c]
+[login] 3: post-only log in from IP 172.28.0.4
+2025-09-18 20:14:22 [@8bd1c0dd1a4e]
+[login] 3: Failed login for  from IP 172.28.0.4
+2025-09-18 20:14:42 [@8bd1c0dd1a4e]
+[login] 3: post-only log in from IP 172.28.0.4
+2026-07-08 13:55:32 [@5b3cd11a4856]
+[login] 3: tech log in from IP 172.28.0.4
+2026-07-08 14:11:18 [@5b3cd11a4856]
+[login] 3: normal log in from IP 172.28.0.4
+2026-08-25 17:20:27 [@de3afe20d4a4]
+[login] 3: glpi log in from IP 172.28.0.7
+2026-08-25 17:30:00 [@de3afe20d4a4]
+[login] 3: glpi log in from IP 172.28.0.6
+2026-08-25 18:10:24 [@0edd1c3a4bbd]
+[login] 3: glpi log in from IP 172.28.0.4
+2026-09-03 19:58:49 [@0edd1c3a4bbd]
+[login] 3: Failed login for  from IP 172.28.0.4
+2026-09-03 19:59:04 [@0edd1c3a4bbd]
+[login] 3: Failed login for admin from IP 172.28.0.4
+2026-09-03 19:59:22 [@0edd1c3a4bbd]
+[login] 3: glpi log in from IP 172.28.0.4
+2026-09-07 16:03:52 [@0edd1c3a4bbd]
+[login] 3: glpi log in from IP 172.28.0.4
+2026-09-07 16:13:01 [@0edd1c3a4bbd]
+[login] 3: Failed login for  from IP 172.28.0.4
+2026-09-07 16:13:09 [@0edd1c3a4bbd]
+[login] 3: glpi log in from IP 172.28.0.4

@@ -77,7 +77,7 @@ class Html {
    // No neutralizamos etiquetas mal formateadas
    // $value = preg_replace("/(<)([^>]*<)/", "&lt;$2", $value);
 
-   // ❌ NO usamos htmLawed (este es el que más filtra)
+   // Nousamos htmLawed (este es el que más filtra)
    // include_once(GLPI_HTMLAWED);
    // $value = htmLawed($value, [...]);
 

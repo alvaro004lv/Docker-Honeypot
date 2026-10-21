@@ -1,0 +1,43 @@
+# -----------------------------
+# Credenciales y configuración sensible
+# -----------------------------
+deployments/.env
+compose/webserver/glpi/config/config_db.php
+compose/webserver/glpi/config/config_db_slave.php
+
+# -----------------------------
+# Logs de Suricata (bind mount del host)
+# -----------------------------
+compose/suricata/log/
+
+# -----------------------------
+# Cachés y temporales de GLPI
+# -----------------------------
+compose/webserver/glpi/files/_cache/
+compose/webserver/glpi/files/_tmp/
+compose/webserver/glpi/files/_sessions/
+compose/webserver/glpi/files/_uploads/
+compose/webserver/glpi/files/_logs/
+
+# -----------------------------
+# Artefactos de build y Python
+# -----------------------------
+*.log
+*.pid
+*.sock
+*.pid.lock
+*.swp
+*.bak
+*.tar
+*.pyc
+__pycache__/
+node_modules/
+venv/
+docker-compose.override.yml
+
+# -----------------------------
+# Sistema operativo
+# -----------------------------
+Thumbs.db
+Desktop.ini
+*.DS_Store

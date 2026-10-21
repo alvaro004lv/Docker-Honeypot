@@ -1,0 +1,87 @@
+# Reglas Suricata - Honeypot Departamento TI
+# Red: 172.28.0.0/24
+
+# Conectividad general (reglas amplias con umbral de ruido controlado en
+# telegram_alerts.py - se disparan ante cualquier tráfico a los servicios)
+alert tcp any any -> 172.28.0.0/24 [80,5000,22,445,139] (msg:"HONEYPOT - TCP connection to service"; sid:1000001; rev:2;)
+alert udp any any -> 172.28.0.0/24 [80,5000,22,445,139] (msg:"HONEYPOT - UDP to service port"; sid:1000002; rev:2;)
+alert icmp any any -> 172.28.0.0/24 any (msg:"HONEYPOT - ICMP probe detected"; sid:1000003; rev:2;)
+
+# Fuerza bruta SSH / enumeración
+alert tcp any any -> 172.28.0.0/24 22 (msg:"HONEYPOT - SSH connection attempt"; flow:to_server,established; app-layer-protocol:ssh; sid:1000010; rev:1;)
+
+# Acceso SMB (movimiento lateral / descubrimiento de credenciales)
+alert tcp any any -> 172.28.0.0/24 445 (msg:"HONEYPOT - SMB connection"; flow:to_server,established; app-layer-protocol:smb; sid:1000020; rev:1;)
+alert tcp any any -> 172.28.0.0/24 139 (msg:"HONEYPOT - NetBIOS SMB connection"; flow:to_server,established; sid:1000021; rev:1;)
+
+# Ataques HTTP al servidor web GLPI (puerto 80)
+alert http any any -> 172.28.0.0/24 80 (msg:"HONEYPOT - HTTP request to GLPI"; flow:to_server,established; sid:1000030; rev:1;)
+
+# Intento de XSS en la petición HTTP
+alert http any any -> 172.28.0.0/24 80 (msg:"HONEYPOT - Potential XSS in HTTP request"; flow:to_server,established; http.uri; content:"<script"; nocase; sid:1000031; rev:1;)
+alert http any any -> 172.28.0.0/24 80 (msg:"HONEYPOT - Potential XSS via body"; flow:to_server,established; http.request_body; content:"<script"; nocase; sid:1000032; rev:1;)
+
+# Patrones de inyección SQL
+alert http any any -> 172.28.0.0/24 80 (msg:"HONEYPOT - SQL Injection attempt (UNION)"; flow:to_server,established; http.uri; content:"UNION"; nocase; content:"SELECT"; nocase; sid:1000033; rev:1;)
+alert http any any -> 172.28.0.0/24 80 (msg:"HONEYPOT - SQL Injection attempt (OR 1=1)"; flow:to_server,established; http.request_body; content:"OR 1=1"; nocase; sid:1000034; rev:1;)
+alert http any any -> 172.28.0.0/24 80 (msg:"HONEYPOT - SQL Injection attempt (single quote)"; flow:to_server,established; http.uri; content:"'"; content:"--"; sid:1000035; rev:1;)
+
+# Subida de fichero al directorio de GLPI (posible webshell)
+alert http any any -> 172.28.0.0/24 80 (msg:"HONEYPOT - File upload to GLPI"; flow:to_server,established; http.method; content:"POST"; http.uri; content:"/front/document.form.php"; sid:1000036; rev:1;)
+alert http any any -> 172.28.0.0/24 80 (msg:"HONEYPOT - PHP webshell upload attempt"; flow:to_server,established; http.request_body; content:"<?php"; nocase; sid:1000037; rev:1;)
+
+# Traversal de directorios
+alert http any any -> 172.28.0.0/24 80 (msg:"HONEYPOT - Directory traversal attempt"; flow:to_server,established; http.uri; content:"../"; sid:1000038; rev:1;)
+
+# Intentos de login en GLPI
+alert http any any -> 172.28.0.0/24 80 (msg:"HONEYPOT - GLPI login POST"; flow:to_server,established; http.method; content:"POST"; http.uri; content:"/front/login.php"; sid:1000039; rev:1;)
+
+# Ataques al dispositivo IoT (puerto 5000)
+alert tcp any any -> 172.28.0.0/24 5000 (msg:"HONEYPOT - Connection to IoT device"; flow:to_server,established; sid:1000050; rev:1;)
+
+# Inyección de comandos vía POST /set
+alert http any any -> 172.28.0.0/24 5000 (msg:"HONEYPOT - IoT POST /set (potential command injection)"; flow:to_server,established; http.method; content:"POST"; http.uri; content:"/set"; sid:1000051; rev:1;)
+
+# Reverse shell con netcat en el cuerpo de la petición al IoT
+alert http any any -> 172.28.0.0/24 5000 (msg:"HONEYPOT - Reverse shell attempt via IoT (nc)"; flow:to_server,established; http.request_body; content:"nc "; nocase; sid:1000052; rev:1;)
+alert http any any -> 172.28.0.0/24 5000 (msg:"HONEYPOT - Reverse shell attempt via IoT (bash)"; flow:to_server,established; http.request_body; content:"bash -i"; nocase; sid:1000053; rev:1;)
+alert http any any -> 172.28.0.0/24 5000 (msg:"HONEYPOT - Reverse shell attempt via IoT (/bin/sh)"; flow:to_server,established; http.request_body; content:"/bin/sh"; nocase; sid:1000054; rev:1;)
+
+# Conexiones salientes del honeypot (atacante recibiendo la shell)
+# Se excluyen 80/443: es el tráfico legítimo de los propios monitores hacia
+# la API de Telegram (y de Suricata compartiendo la red del gateway, ese
+# tráfico saliente pasa por esta regla en cada request). Un reverse shell
+# real (nc, bash -i, /dev/tcp) casi siempre usa un puerto alto sin cifrar.
+alert tcp 172.28.0.0/24 any -> $EXTERNAL_NET ![80,443] (msg:"HONEYPOT - Outbound connection from internal host (possible reverse shell)"; flow:to_server,established; sid:1000060; rev:2;)
+
+# Escaneo de puertos / reconocimiento
+alert tcp any any -> 172.28.0.0/24 any (msg:"HONEYPOT - TCP SYN scan"; flags:S; threshold:type threshold,track by_src,count 10,seconds 5; sid:1000070; rev:2;)
+
+# Técnicas de escaneo sigiloso de Nmap (-sN, -sF, -sX)
+alert tcp any any -> 172.28.0.0/24 any (msg:"HONEYPOT - Nmap NULL scan"; flags:0; sid:1000071; rev:1;)
+alert tcp any any -> 172.28.0.0/24 any (msg:"HONEYPOT - Nmap FIN scan"; flags:F; sid:1000072; rev:2;)
+alert tcp any any -> 172.28.0.0/24 any (msg:"HONEYPOT - Nmap XMAS scan"; flags:FPU; sid:1000073; rev:2;)
+
+# Fingerprint HTTP de herramientas de escaneo/explotación automatizadas
+alert http any any -> 172.28.0.0/24 any (msg:"HONEYPOT - Nmap NSE HTTP script scan"; flow:to_server,established; http.user_agent; content:"Nmap Scripting Engine"; nocase; sid:1000074; rev:1;)
+alert http any any -> 172.28.0.0/24 any (msg:"HONEYPOT - sqlmap User-Agent detected"; flow:to_server,established; http.user_agent; content:"sqlmap"; nocase; sid:1000075; rev:1;)
+alert http any any -> 172.28.0.0/24 any (msg:"HONEYPOT - Nikto scanner User-Agent detected"; flow:to_server,established; http.user_agent; content:"Nikto"; nocase; sid:1000076; rev:1;)
+alert http any any -> 172.28.0.0/24 any (msg:"HONEYPOT - Gobuster/dirb brute-force User-Agent"; flow:to_server,established; http.user_agent; content:"gobuster"; nocase; sid:1000077; rev:1;)
+
+# sqlmap suele probar payloads de time-based blind SQLi (SLEEP/BENCHMARK)
+alert http any any -> 172.28.0.0/24 80 (msg:"HONEYPOT - SQL Injection attempt (time-based blind)"; flow:to_server,established; http.uri; pcre:"/(sleep|benchmark)\s*\(/i"; sid:1000078; rev:1;)
+
+# Fuerza bruta (umbral: muchos intentos desde el mismo origen en poco tiempo)
+# SSH: más de 5 intentos de conexión en 60s desde el mismo origen
+# (sin flow:established -- un paquete SYN puro nunca pertenece a un flujo ya
+# establecido, así que combinarlos hace que la regla no dispare nunca)
+alert tcp any any -> 172.28.0.0/24 22 (msg:"HONEYPOT - SSH brute-force (high connection rate)"; flags:S; threshold:type threshold,track by_src,count 5,seconds 60; sid:1000080; rev:2;)
+
+# GLPI: más de 5 POST a login.php en 30s desde el mismo origen
+alert http any any -> 172.28.0.0/24 80 (msg:"HONEYPOT - GLPI login brute-force"; flow:to_server,established; http.method; content:"POST"; http.uri; content:"/front/login.php"; threshold:type threshold,track by_src,count 5,seconds 30; sid:1000081; rev:1;)
+
+# IoT: más de 5 POST a /set en 15s desde el mismo origen (fuzzing/automatización del RCE)
+alert http any any -> 172.28.0.0/24 5000 (msg:"HONEYPOT - IoT /set brute-force / automated RCE fuzzing"; flow:to_server,established; http.method; content:"POST"; http.uri; content:"/set"; threshold:type threshold,track by_src,count 5,seconds 15; sid:1000082; rev:1;)
+
+# SMB: más de 5 intentos de conexión en 30s desde el mismo origen (enumeración automatizada)
+alert tcp any any -> 172.28.0.0/24 445 (msg:"HONEYPOT - SMB brute-force / automated enumeration"; flags:S; threshold:type threshold,track by_src,count 5,seconds 30; sid:1000083; rev:2;)

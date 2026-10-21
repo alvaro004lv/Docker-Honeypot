@@ -4,18 +4,49 @@ services:
   gateway:
     build: ../compose/gateway
     container_name: honeypot-gateway
+    env_file: .env
     networks:
       - honeypot_net
     ports:
-      - "2223:22"      # SSH desde host
-      - "1445:445"     # SMB (host:1445 -> container:445)
-      - "1139:139"     # NetBIOS session (host:1139 -> container:139)
+      - "2223:22"
+      - "1445:445"
+      - "1139:139"
     tty: true
 
+  suricata:
+    build: ../compose/suricata
+    container_name: suricata
+    env_file: .env
+    # Comparte la red del gateway en vez de tener su propia IP en honeypot_net.
+    # Con IP propia, el bridge de Docker deja de reenviarle el tráfico unicast
+    # entre otros dos contenedores en cuanto aprende sus MAC, así que Suricata
+    # se quedaba sin ver nada pasado el arranque. Compartiendo la red del
+    # gateway sí ve todo lo que entra y sale de él (SSH, SMB, y lo que se
+    # reenvía por el túnel -L hacia glpi-web e iot-vuln).
+    network_mode: "service:gateway"
+    # NET_ADMIN y NET_RAW son necesarias para abrir sockets AF_PACKET en modo captura
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_NICE
+    volumes:
+      - ../compose/suricata/rules:/var/lib/suricata/rules
+      - ../compose/suricata/log:/var/log/suricata
+      - ../compose/suricata/suricata.yaml:/etc/suricata/suricata.yaml:ro
+      - ../compose/suricata/telegram_alerts.py:/telegram_alerts.py:ro
+    depends_on:
+      - gateway
+      - web
+      - iot
+    deploy:
+      resources:
+        limits:
+          memory: 512M
 
   web:
     build: ../compose/webserver
     container_name: glpi-web
+    env_file: .env
     volumes:
       - ../compose/webserver/glpi:/var/www/html
     depends_on:
@@ -43,6 +74,12 @@ services:
   iot:
     build: ../compose/iot
     container_name: iot-vuln
+    env_file: .env
+    # Sin SYS_PTRACE, monitor_iot.py no puede leer /proc/<pid>/fd/* de otros
+    # procesos aunque corra como root dentro del contenedor (Docker la quita
+    # por defecto), y la detección de reverse shell y escalada no funciona.
+    cap_add:
+      - SYS_PTRACE
     networks:
       - honeypot_net
 

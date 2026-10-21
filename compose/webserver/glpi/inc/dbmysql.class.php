@@ -191,6 +191,29 @@ class DBmysql {
          if (($is_debug || isAPI()) && $CFG_GLPI["debug_sql"]) {
             $DEBUG_SQL["errors"][$SQL_TOTAL_REQUEST] = $this->error();
          }
+
+         // Vulnerabilidad intencionada del honeypot: si config/config_db_slave.php
+         // define DEBUG_SQL=true, el error MySQL crudo (consulta + mensaje del motor)
+         // se vuelca directamente al navegador, sin necesidad de sesión de debug ni
+         // de estar autenticado. Simula un servidor con el modo debug mal desactivado
+         // en producción. Se incluye el fichero de forma directa porque GLPI solo lo
+         // carga cuando activa una conexión de réplica (DBSlave), no en cada request.
+         if (!defined('DEBUG_SQL') && file_exists(GLPI_CONFIG_DIR . '/config_db_slave.php')) {
+            include_once(GLPI_CONFIG_DIR . '/config_db_slave.php');
+         }
+         if (defined('DEBUG_SQL') && DEBUG_SQL) {
+            // Si las cabeceras HTTP todavía no se han enviado (algunas páginas,
+            // como user_search.php, consultan la BD antes de llamar a
+            // Html::header()), volcar el error aquí rompería las cabeceras
+            // posteriores con un fatal "headers already sent". Se difiere con
+            // un shutdown function para que siempre se imprima al final,
+            // después de cualquier header() que la página todavía necesite.
+            register_shutdown_function(function () use ($error) {
+                echo "<pre style='color:red;border:1px solid red;padding:5px;'>";
+                echo htmlspecialchars($error);
+                echo "</pre>";
+            });
+         }
       }
 
       if ($is_debug && $CFG_GLPI["debug_sql"]) {

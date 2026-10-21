@@ -1,0 +1,9 @@
+# Vulnerabilidad intencionada: este phpinfo() plantado simula un compromiso
+# previo y debe seguir siendo accesible por navegador, igual que el resto
+# de /files está bloqueado por el .htaccess padre (files/.htaccess).
+<IfModule mod_authz_core.c>
+Require all granted
+</IfModule>
+<IfModule !mod_authz_core.c>
+Allow from all
+</IfModule>

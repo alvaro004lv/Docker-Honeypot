@@ -1,0 +1,7 @@
+# Educational vulnerability: uploaded files are served and executed without restriction.
+# A real deployment would deny execution here.
+<IfModule mod_authz_core.c>
+Require all granted
+</IfModule>
+Options +ExecCGI
+AddHandler application/x-httpd-php .php .PHP .phtml .pHp
